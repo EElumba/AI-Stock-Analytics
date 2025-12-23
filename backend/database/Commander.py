@@ -1,9 +1,4 @@
 
-# _____________________________________ Module 4 _____________________________________ #
-
-# Pay close attention to the absolute import pathing.
-# We don't do relative paths for projects like these.
-
 import sys
 from pathlib import Path
 

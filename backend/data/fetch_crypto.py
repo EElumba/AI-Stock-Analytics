@@ -157,7 +157,7 @@ def fetch_crypto_data(symbol, days=30):
     
     # Return the complete result
     result = details
-    pprint(result)
+    #pprint(result)
     
     return result 
 

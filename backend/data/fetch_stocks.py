@@ -1,6 +1,4 @@
 
-# _____________________________________ Module 1 _____________________________________ #
-
 import requests # run `pip install requests` if haven't already
 from pprint import pprint
 import pandas as pd
@@ -13,7 +11,6 @@ load_dotenv()
 # For code running (print testing, etc...), run the file as a `module` with the flag -m
 # py -m backend.data.fetch_stocks <- no .py
 
-# TODO 4
 def get_data_details(data:dict)->dict:
     # Extract the time series data (the key varies based on the function used)
     # For TIME_SERIES_MONTHLY, the key is "Monthly Time Series"
@@ -74,7 +71,6 @@ def get_data_details(data:dict)->dict:
     return result
 
 
-# TODO 5
 def get_standing(details:dict)->str:
     # Extract the ticker name (first key that isn't 'count')
     ticker = None
@@ -110,25 +106,24 @@ def get_standing(details:dict)->str:
 
     return standing
 
-# we will export this function 
+# will export this function 
 def fetch_stock_data(params:str, base_url:str=" https://www.alphavantage.co", endpoint:str="query"):
     '''
     URL Sample:
     https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&outputsize=full&apikey=demo
     
-    API Key: 4YFVIJ6LXV2U1GZ9
     ---
     
     Full Documentation:
     
-    https://www.alphavantage.co/documentation/ <---------- # TODO 1
+    https://www.alphavantage.co/documentation/ 
     
     '''
     result = {}
     api_key = os.getenv('APIKEY')
     if not api_key:
         raise ValueError("API key not found in environment variables")
-    request_uri = f'{base_url}/{endpoint}?{params}&apikey={api_key}' # TODO 2: build the request URI here!! use the parameters (base_url, endpoint, params) as building blocks
+    request_uri = f'{base_url}/{endpoint}?{params}&apikey={api_key}' # build the request URI here!! use the parameters (base_url, endpoint, params) as building blocks
     try:
         
         response = requests.get(request_uri) # creates the request
@@ -143,11 +138,9 @@ def fetch_stock_data(params:str, base_url:str=" https://www.alphavantage.co", en
             data:dict = response.json() # get the content of the API. This should include the JSON files
             #pprint(data)
             
-            # TODO 4: Uncomment and implement
             details = get_data_details(data)
             #pprint(details)
-            
-            # TODO 5
+        
             standing = get_standing(details)
             details["standing"] = standing
             result = details

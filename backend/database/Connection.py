@@ -1,6 +1,3 @@
-
-# _____________________________________ Module 3 _____________________________________ #
-
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -13,7 +10,6 @@ class Connection:
     def __init__(self) -> None:
         
         self.host = 'localhost'
-        # TODO: Read module_3.md instructions to set these up according to what you put
         self.user = 'root'
         self.password = os.getenv('db_password')
         if not self.password:
@@ -168,7 +164,7 @@ class Connection:
         '''
         Creates a custom query for potential user use.
         '''
-        pass # TODO
+        pass 
     
     # ___________________ Danger Zone ___________________ #
     
@@ -205,7 +201,7 @@ class Connection:
 
     def query_delete_database(self):
         """Deletes the current database."""        
-         # Logic Here #
+         
         
         user_input = input(f"Are you certain you want to delete {self.database} database? (Y/N)") # PLACEHOLDER layer of security
         
